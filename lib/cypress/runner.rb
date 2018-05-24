@@ -26,7 +26,6 @@ module Cypress
         require 'capybara/rails'
 
         Capybara.current_driver   = :selenium # oh, the irony....
-        Capybara.server           = :puma
         configuration.server_port = Capybara.current_session.server.port
       end
 
@@ -34,7 +33,7 @@ module Cypress
         result  = ['yarn', 'run']
         result += ['cypress', configuration.run_mode]
         result += ['--env', "SERVER_PORT=#{configuration.server_port}"]
-        result += ['--record', "--key", "1511081a-e957-44f8-8df7-f305da53a39f"]
+        # result += ['--record', "--key", "1511081a-e957-44f8-8df7-f305da53a39f"]
         result += ['-c', 'videosFolder=spec/cypress/videos,fixturesFolder=spec/cypress/fixtures,integrationFolder=spec/cypress/integrations/,supportFile=spec/cypress/support/setup.js']
         result
       end
